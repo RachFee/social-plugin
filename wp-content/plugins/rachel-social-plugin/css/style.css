@@ -1,0 +1,122 @@
+<style>
+ 	/*div*/
+	div.rsocial{
+		width:1000px;
+		height:1000px; 
+		padding:0px;
+		margin:0px;
+	}
+	/*general ul & li*/
+	 ul.rsocial-ul{
+		padding:0px;
+		margin:0px;
+	}
+	ul.rsocial-ul li{
+		list-style-type: none;
+		display:inline-block;
+		overflow:hidden;
+		width:250px;
+		height:250px;
+		padding:0px;
+		margin:0px;
+	}
+
+	/*grid-row*/
+	ul.grid-row{
+		width:1000px;
+		height:250px;
+		padding:0px;
+		margin-top:-4px;
+	}
+	ul.grid-row li{
+		list-style-type: none;
+		display:inline-block;
+		/*background-color:red;*/
+		float:left;
+	}
+
+	/*grid-col*/
+	ul.grid-col{
+		display:inline-block;
+		width:250px;
+		height:500px;
+		padding:0px;
+		margin:0px;
+
+	}
+
+	ul.grid-col li{
+		list-style-type: none;
+		display:inline-block;
+		/*background-color:blue;*/
+		width:250px;
+		height:250px;
+	}
+
+	/*center-block*/
+	/* TODO: Figure out hwo to do this without a negative margin; */
+	ul.center-block{
+		display:inline-block;
+		width:500px;
+		height:500px;		
+		margin:-5px;
+		padding:0px;
+	}
+	/*
+	ul.center-block{
+        width:50%;
+        min-width:200px;
+        max-width:600px;
+        padding:0px;
+        margin:0px;
+        min-height:600px;
+		max-height:600px;
+        border:1px dotted blue;
+        display:inline-block;
+    }*/
+	ul.center-block li{
+		display:inline-block;
+		width:500px;
+		height:500px;
+
+	}
+
+	/*image squares*/
+	div ul li.sm-grid-sq div{
+		height:100%;
+	}
+
+	div ul li.sm-grid-sq {
+		background-color:black;
+		display:block;
+	}
+	div ul li.sm-grid-sq div img{
+		height:250px;
+		width:auto;
+		opacity:0.6;
+		display:block;
+		margin:auto;
+		position:relative;
+	}
+
+	div ul li.sm-grid-sq div p{
+	 	height:100%;
+	 	width:230px;
+	 	z-index: 100;
+	  	position: absolute;
+	  	color: white;
+	  	font-family:arial;
+	  	font-size: 14;
+	  	font-weight: bold;
+	  	text-align: justify;
+	  	line-height:130%;
+	  	margin-top: -250px;
+	  	margin-left:10px;
+	  	margin-right:10px;
+	  	padding: 5px 5px 5px 5px;
+	  /*	top: 0;
+	  	left: 0; */
+	  	
+	}
+
+</style>
