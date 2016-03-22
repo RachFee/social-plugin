@@ -158,12 +158,16 @@ function getFacebook($username){
 	$access_token = "1705359549748418". "|" . "b309bd61f621d800df32d10814285cc5";
 	
 	//TODO: put this in a try-catch block
+	try{
 	$fb = new Facebook\Facebook([
 	  	"app_id" => "1705359549748418",
 	  	"app_secret" => "b309bd61f621d800df32d10814285cc5",
 	  	"default_graph_version" => "v2.5",
 	  	"default_access_token" => $access_token
 	]);
+	}catch(Exception $e){
+		return false;
+	}
 	
 	/** This block is the typically documented request method which is overly complicated, 
 	 but I'm including for demonstration purposes**/// start ->
@@ -182,17 +186,23 @@ function getFacebook($username){
 	//This block is the lesser documented and much simpler method which I'll be using. 
 	//It returns a plain old array. What more do we need?
 	//we can also directly specify the limit in the query here as it is calculated properly by facebook
-	//TODO: Put this in a try-catch
-	$feed = $fb->get('/'.$username.'/feed?limit=6')->getDecodedBody();
 	
-	//check for errors (such as auth issues or page missing)
-	if (isset($feed->error) && !empty($feed->error)){
-		return false;
+	//use a trycatch as this throws a fatal exception. Return empty array if it fails.
+	try{
+		$feed = $fb->get('/'.$username.'/feed?limit=6')->getDecodedBody();
+	} catch(Exception $e){
+		return array();
 	}
+
+	//check for errors (such as auth issues or page missing)
+	if ((isset($feed->error) && !empty($feed->error)) || (isset($feed['data']) && empty($feed['data']))){
+		return array();
+	}
+
+
 
 	//get profile img for backup. We'll just do this once before the loop as it's not included in the post object.
 	//specify 300x300, though it still returns a 320
-	//TODO: put in try - catch as this will throw a fatal error 
 	$profilePhoto = $fb->get("/".$username."/picture?width=300&height=300")->getHeaders()['Location'];
 
 	foreach ($feed['data'] AS $postNum => $postValue){

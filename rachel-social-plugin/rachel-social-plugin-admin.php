@@ -116,6 +116,7 @@ function displayOptions(){
                     <td>
                         http://www.facebook.com/<input type="text" name="rsp-fbPageLink" id="rsp-fbPageLink" class="textField" value="<?php echo stripslashes($adminOptions['rsp-fbPageLink']); ?>" />
                         eg. londonlibrary
+                        <br/><em>*Please note that Facebook only supports Page Feeds.
                     </td>
                 </tr>
             </table>
@@ -197,8 +198,13 @@ function saveOptionsData(){
 	update_option('rsp-gmAddress', $_POST['rsp-gmAddress'] );
 	update_option('rsp-gmMapType', $_POST['rsp-gmMapType']);
 	update_option('rsp-gmMarkerColour', $_POST['rsp-gmMarkerColour']);
-	//save Facebook options
-	update_option('rsp-fbPageLink', $_POST['rsp-fbPageLink']);
+	//save Facebook options - test before saving
+	if(empty(getFacebook($_POST['rsp-fbPageLink']))){
+        echo '<div id="message" class="updated fade"><p><strong>Facebook page does not exist and was not updated.</strong></p></div>';
+    
+    }else{
+        update_option('rsp-fbPageLink', $_POST['rsp-fbPageLink']);  
+    }
 	//save Twitter options
 	update_option('rsp-twHandle', $_POST['rsp-twHandle']);
 	update_option('rsp-twIncludeRTs', $_POST['rsp-twIncludeRTs']);
@@ -210,8 +216,9 @@ function saveOptionsData(){
 	$adminOptions['rsp-gmAddress'] = $_POST['rsp-gmAddress'];
 	$adminOptions['rsp-gmMapType'] = $_POST['rsp-gmMapType'];
 	$adminOptions['rsp-gmMarkerColour'] = $_POST['rsp-gmMarkerColour'];
-	//add facebook vars
-	$adminOptions['rsp-fbPageLink'] = $_POST['rsp-fbPageLink'];
+	//add facebook vars - get because we're not sure if it was updated
+	//$adminOptions['rsp-fbPageLink'] = $_POST['rsp-fbPageLink'];
+    $adminOptions['rsp-fbPageLink'] = get_option('rsp-fbPageLink', 'londonlibrary');
 	//add twitter vars
 	$adminOptions['rsp-twHandle'] = $_POST['rsp-twHandle'];
 	$adminOptions['rsp-twIncludeRTs'] = $_POST['rsp-twIncludeRTs'];
