@@ -60,10 +60,10 @@ function getTwitter($username, $includeRTs = false, $includeReplies = false){
 
 	/* set Tokens */ 
 	$settings = array(
-	    "oauth_access_token" => "101379836-FzpztopZphZqSUIlO46bXYs5IBcY5Iv8a6B9qivk",
-	    "oauth_access_token_secret" => "RXlbMBQ5GZEIkyblKd6l4DCKqjYYl4cAxXayKxPRETSyQ",
-	    "consumer_key" => "DedmVZ0NQjKb0pJMwudXTiXPS",
-	    "consumer_secret" => "y8rXQilLsMvj36RZXDW9YvSXoWwpl0m6uy5RdBrCxibrlPoIoX"
+	    "oauth_access_token" => "[ENTER ACCESS TOKEN]",
+	    "oauth_access_token_secret" => "[ENTER SECRET TOKEN]",
+	    "consumer_key" => "[ENTER CONSUMER KEYS]",
+	    "consumer_secret" => "[ENTER CONSUMER SECRET]"
 	);
 
 
@@ -155,13 +155,13 @@ function getFacebook($username){
 	$posts = array();
 
 	//we'll use appID/appSecret method to prevent early expiry
-	$access_token = "1705359549748418". "|" . "b309bd61f621d800df32d10814285cc5";
+	$access_token = "[ENTER APP ID]". "|" . "[ENTER APP SECRET]";
 	
 	//TODO: put this in a try-catch block
 	try{
 	$fb = new Facebook\Facebook([
-	  	"app_id" => "1705359549748418",
-	  	"app_secret" => "b309bd61f621d800df32d10814285cc5",
+	  	"app_id" => "[ENTER APP ID]",
+	  	"app_secret" => "[ENTER APP SECRET]",
 	  	"default_graph_version" => "v2.5",
 	  	"default_access_token" => $access_token
 	]);
